@@ -1,11 +1,14 @@
 # ------------------------------------------------------------------------------
 # Configuration options for GCC
 # ------------------------------------------------------------------------------
-set(GCC_COMPILER_VERSION ${CMAKE_CXX_COMPILER_VERSION} CACHE INTERNAL "")
+set(GCC_COMPILER_VERSION
+    ${CMAKE_CXX_COMPILER_VERSION}
+    CACHE INTERNAL "")
 message(STATUS "gcc version: ${GCC_COMPILER_VERSION}")
 
 # Addtional warnings for GCC
-set(CMAKE_CXX_FLAGS_WARN "\
+set(CMAKE_CXX_FLAGS_WARN
+    "\
 -Wnon-virtual-dtor \
 -Wcast-align \
 -Wchar-subscripts \
@@ -29,12 +32,8 @@ if(HAVE_GCC_ERROR_RETURN_TYPE)
 endif()
 
 # Set extra warning flags in debug modes
-set(
-  CMAKE_CXX_FLAGS_RELWITHDEBINFO
-  "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}"
-)
-set(
-  CMAKE_CXX_FLAGS_DEBUG
-  "${CMAKE_CXX_FLAGS_DEBUG} ${CMAKE_CXX_FLAGS_WARN} ${CMAKE_CXX_FLAGS_ERROR}"
-)
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+    "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
+set(CMAKE_CXX_FLAGS_DEBUG
+    "${CMAKE_CXX_FLAGS_DEBUG} ${CMAKE_CXX_FLAGS_WARN} ${CMAKE_CXX_FLAGS_ERROR}")
 set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG}")

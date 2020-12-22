@@ -16,10 +16,8 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 # GCC >= 7.0
-if(
-  CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
-  AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 7.0
-)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION
+                                            VERSION_LESS 7.0)
   message(FATAL_ERROR "GCC 7.0 or later is required.")
 else()
   include(Compilers/GNUConfig)
