@@ -16,21 +16,29 @@ endforeach()
 project(appbundle LANGUAGES C CXX)
 
 # Our CMake modules
-list(INSERT CMAKE_MODULE_PATH 0 "${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/cmake/Modules")
+list(INSERT CMAKE_MODULE_PATH 0
+     "${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/cmake/Modules")
 
 # Compiler configuration
 include(CompilerConfig)
 
 # Setup conan
 include(${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/vendor/conan/conan.cmake)
-conan_add_remote(NAME bincrafters INDEX 1
-                 URL https://api.bintray.com/conan/bincrafters/public-conan)
-conan_add_remote(NAME ess-dmsc INDEX 2
-                 URL https://api.bintray.com/conan/ess-dmsc/conan)
-conan_cmake_run(CONANFILE conanfile.py
-                BASIC_SETUP CMAKE_TARGETS KEEP_RPATH NO_OUTPUT_DIRS
-                BUILD missing
-                PROFILE_AUTO ALL)
+conan_add_remote(NAME bincrafters INDEX 1 URL
+                 https://api.bintray.com/conan/bincrafters/public-conan)
+conan_add_remote(NAME ess-dmsc INDEX 2 URL
+                 https://api.bintray.com/conan/ess-dmsc/conan)
+conan_cmake_run(
+  CONANFILE
+  conanfile.py
+  BASIC_SETUP
+  CMAKE_TARGETS
+  KEEP_RPATH
+  NO_OUTPUT_DIRS
+  BUILD
+  missing
+  PROFILE_AUTO
+  ALL)
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 add_subdirectory(framework)
