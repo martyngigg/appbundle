@@ -1,2 +1,2 @@
 add_subdirectory(core)
-# add_subdirectory(bindings/python)
+add_subdirectory(bindings/python)

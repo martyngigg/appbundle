@@ -19,6 +19,10 @@ project(appbundle LANGUAGES C CXX)
 list(INSERT CMAKE_MODULE_PATH 0
      "${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/cmake/Modules")
 
+# Place everything in bin
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+
 # Compiler configuration
 include(CompilerConfig)
 
@@ -29,16 +33,10 @@ conan_add_remote(NAME bincrafters INDEX 1 URL
 conan_add_remote(NAME ess-dmsc INDEX 2 URL
                  https://api.bintray.com/conan/ess-dmsc/conan)
 conan_cmake_run(
-  CONANFILE
-  conanfile.py
-  BASIC_SETUP
-  CMAKE_TARGETS
-  KEEP_RPATH
-  NO_OUTPUT_DIRS
-  BUILD
-  missing
-  PROFILE_AUTO
-  ALL)
+  CONANFILE conanfile.py
+  BASIC_SETUP CMAKE_TARGETS KEEP_RPATH NO_OUTPUT_DIRS
+  BUILD missing
+  PROFILE_AUTO ALL)
 
 # ------------------------------------------------------------------------------
 add_subdirectory(framework)
