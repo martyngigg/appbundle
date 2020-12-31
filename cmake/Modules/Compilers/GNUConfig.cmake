@@ -1,11 +1,6 @@
 # ------------------------------------------------------------------------------
 # Configuration options for GCC
 # ------------------------------------------------------------------------------
-set(GCC_COMPILER_VERSION
-    ${CMAKE_CXX_COMPILER_VERSION}
-    CACHE INTERNAL "")
-message(STATUS "gcc version: ${GCC_COMPILER_VERSION}")
-
 # Addtional warnings for GCC
 set(CMAKE_CXX_FLAGS_WARN
     "\
