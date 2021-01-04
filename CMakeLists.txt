@@ -19,9 +19,9 @@ project(appbundle LANGUAGES C CXX)
 list(INSERT CMAKE_MODULE_PATH 0
      "${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/cmake/Modules")
 
-# Place everything in bin
+# Default output to lib/bin directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 
 # Compiler configuration
 include(CompilerConfig)
