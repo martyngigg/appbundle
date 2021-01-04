@@ -6,6 +6,7 @@ function(add_framework_library targetname)
   generate_export_header(${targetname})
   target_include_directories(
     ${targetname} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
+  install(TARGETS ${targetname})
 endfunction()
 
 set(SRCS version.cpp)

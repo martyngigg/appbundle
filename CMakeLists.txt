@@ -19,9 +19,17 @@ project(appbundle LANGUAGES C CXX)
 list(INSERT CMAKE_MODULE_PATH 0
      "${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/cmake/Modules")
 
-# Default output to lib/bin directories
+# Find Python early
+find_package(
+  Python
+  COMPONENTS Interpreter Development
+  REQUIRED)
+
+# Default build output to lib/bin directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
+# Set default install directories
+include(GNUInstallDirs)
 
 # Compiler configuration
 include(CompilerConfig)

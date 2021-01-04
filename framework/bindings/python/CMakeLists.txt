@@ -1,11 +1,6 @@
-# Python + Boost Python
-find_package(
-  Python
-  COMPONENTS Interpreter Development
-  REQUIRED)
 find_package(
   Boost
-  COMPONENTS python NO_DEFAULT_PATH
+  COMPONENTS python
   REQUIRED)
 
 # Create a library wrapped with boost.python
@@ -21,10 +16,8 @@ function(add_boostpy_library libraryname entrypoint)
 endfunction()
 
 add_subdirectory(framework)
-add_custom_target(
-  framework_setup_develop ALL
-  BYPRODUCTS ${Python_SITELIB}/framework.egg-link
-  COMMAND ${Python_EXECUTABLE} setup.py develop
-  DEPENDS _core
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMENT "Generating framework egg link in ${Python_SITELIB}")
+install(
+  DIRECTORY framework
+  TYPE LIB
+  PATTERN "__pycache__/*" EXCLUDE
+  PATTERN "src/*" EXCLUDE)

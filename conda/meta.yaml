@@ -1,0 +1,25 @@
+package:
+  name: appbundle
+  version: 0.1.0
+
+source:
+  path: ..
+
+requirements:
+  build:
+    - cmake
+    - git
+    - ninja
+    - python {{ python }}
+    - boost
+    - clang_osx-64=10.0.0
+    - clangxx_osx-64=10.0.0
+
+  run:
+    - python {{ python }}
+    - boost
+
+about:
+  home: https://github.com/martyngigg/appbundle
+  license: MIT
+  dev_url: https://github.com/martyngigg/appbundle
