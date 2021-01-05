@@ -1,6 +1,7 @@
 """Provides access to the low-level framework libraries"""
 
-import _core
-from _core import *
-
-__all__ = dir(_core)
+try:
+    from ._core import *
+except ModuleNotFoundError:
+    # developer setup
+    from _core import *
