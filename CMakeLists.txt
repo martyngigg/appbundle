@@ -34,5 +34,19 @@ include(GNUInstallDirs)
 # Compiler configuration
 include(CompilerConfig)
 
+# Options
+option(ENABLE_QTWIDGETS
+       "Enable/disable building the Qt-based widgets collection" ON)
+option(ENABLE_QTAPP "Enable/disable building the Qt-based Application" ON)
+
+if(ENABLE_QTAPP AND NOT ENABLE_QTWIDGETS)
+  set(ENABLE_QTWIDGETS
+      ON
+      CACHE BOOL "" FORCE)
+endif()
+
 # Code
 add_subdirectory(framework)
+if(ENABLE_QTWIDGETS OR ENABLE_QTAPP)
+  add_subdirectory(qt)
+endif()
